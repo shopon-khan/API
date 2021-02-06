@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API</title>
 </head>
+
 <body>
     <h1>JSON</h1>
     <h2>JavaScript Object Notation</h2>
+    <ul id="userContainer">
+
+    </ul>
 
     <script>
-        // use stringify to sent any data for server
+        use stringify to sent any data for server
         const user = {id: 245,
              name: "Shopon",
              lover: {
@@ -26,6 +31,27 @@
         // use parse to received any dat form server 
         const formJSON = JSON.parse(userJSON);
         console.log(formJSON);
-    </script>
+
+        fetch('https://jsonplaceholder.typicode.com/users')
+            .then(response => response.json())
+            .then(json => displayUser(json))
+            // data load from website with a function that very useful
+            function displayUser(users){
+                const userNames = users.map(user => user.username);
+                const ul = document.getElementById("userContainer");
+
+                for (let i = 0; i < userNames.length; i++) {
+                    const usernames = userNames[i];
+                    const li = document.createElement("li");
+                    li.innerText = usernames;
+                    ul.appendChild(li);
+                    
+                }
+                console.log(userNames);
+                
+            }
+
+</script>
 </body>
+
 </html>
