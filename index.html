@@ -34,17 +34,17 @@
             friendsName: ["Mehedi", "Rayhan", "Jisan"],
             friendsAges: [22, 24, 28, 30]};
         const userJSON = JSON.stringify(user);
-        {"id":245,"name":"Shopon"}
+        // {"id":245,"name":"Shopon"}
         console.log(userJSON);
-        use parse to received any dat form server 
+        // use parse to received any dat form server 
         const formJSON = JSON.parse(userJSON);
         console.log(formJSON);
 
         fetch('https://jsonplaceholder.typicode.com/users')
             .then(response => response.json())
             .then(json => displayUser(json))
-        data load from website with a function that very useful
-        data get
+        // data load from website with a function that very useful
+        // data get
         function displayUser(users){
             const userNames = users.map(user => user.username);
             const ul = document.getElementById("userContainer");
